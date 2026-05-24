@@ -1,23 +1,14 @@
-name: Self-Hosted Runner Test
-
 on:
   push:
-    branches: [ "main" ]
-  workflow_dispatch: # Allows you to manually trigger this from the Actions tab
-
+    branches:
+      - main
 jobs:
-  test-job:
-    # Use the 'self-hosted' label to route the job to your machine
-    runs-on: self-hosted
-
+  first-job:
+    runs-on: ubuntu-latest
     steps:
+      - name: First step
+        run: echo "this is first step"
+      - name: second step
+        run: mkdir sam && cd sam && pwd
 
-      - name: Simple command
-        run: echo "Hello from my self-hosted runner!"
-
-      - name: Check environment
-        run: |
-          echo "Operating System:"
-          uname -a || ver
-          echo "Current Path:"
-          pwd
+        
